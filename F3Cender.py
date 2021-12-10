@@ -5,7 +5,7 @@ from threading import Thread
 import json
 import os
 
-version = "1.0.0"
+version = "1.0.1"
 
 lisc = """Copyright (c) 2021 DuncanRuns
 
@@ -105,6 +105,9 @@ if __name__ == "__main__":
         jsonFile.close()
     f3cender = F3Cender(jsonDict["url"], jsonDict["username"])
     f3cender.start()
-    while input() != "stop":
-        pass
+    try:
+        while input() not in ["stop","exit","done","quit"]:
+            pass
+    except:
+        print("Keyboard Interrupt (probably)")
     f3cender.stop()
